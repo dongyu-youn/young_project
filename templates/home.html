@@ -1,0 +1,149 @@
+{% extends "base.html" %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% block content %}
+
+    <!-- Navbar -->
+
+    <!-- Section -->
+    <section id="home">
+      <div class="home__container">
+         <img class="home__avatar" src="imgs/projects/game.png" alt="" />
+
+      <h2 class="home__description">영체갤러리</h2>
+      <button class="home__contact">Contact me</button>
+      </div>
+     
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="section">
+      <div class="section__container">
+        <div class="work__categories">
+        <button class="category__btn active">
+          <div class="category__btn-text">최신 <span class="category__count">8</span></div>
+          </button
+        >
+        <button class="category__btn ">
+          <div class="category__btn-text">남성성 <span class="category__count">8</span></div>
+          </button
+        >
+        <button class="category__btn ">
+          <div class="category__btn-text">여성성 <span class="category__count">8</span></div>
+          </button
+        >
+        <button class="category__btn ">
+          <div class="category__btn-text">오늘의 그림 <span class="category__count">8</span></div>
+          </button
+        >
+       
+      </div>
+      <div class="work__projects">
+        <a href="" class="project" target="blank" data-type="front-end">
+          <img
+            src="imgs/projects/youtube.png"
+            alt="Youtube"
+            class="project__img"
+          />
+          <div class="project__description">
+            <h3>Youtube Site</h3>
+            <span>Clone coding with HTML, CSS</span>
+          </div>
+        </a>
+        <a
+          href="https://github.com/dream-ellie/responsive-nav-bar"
+          class="project"
+          data-type="front-end"
+          target="blank"
+        >
+          <img
+            class="project__img"
+            src="imgs/projects/navbar.png"
+            alt="navbar"
+          />
+          <div class="project__description">
+            <h3>Responsive Navbar</h3>
+            <span>HTML, CSS with media query</span>
+          </div>
+        </a>
+        <a
+          href="https://github.com/dream-ellie/responsive-nav-bar"
+          class="project"
+          data-type="front-end"
+          target="blank"
+        >
+          <img class="project__img" src="imgs/projects/game.png" alt="navbar" />
+          <div class="project__description">
+            <h3>Shopping mall game</h3>
+            <span>HTML, CSS, JavaScript, Json</span>
+          </div>
+        </a>
+        <a href="" class="project" data-type="back-end">
+          <img class="project__img" src="imgs/projects/game.png" alt="" />
+          <div class="project__description">
+            <h3>Project</h3>
+            <span>Explanation</span>
+          </div>
+        </a>
+        <a href="" class="project" data-type="back-end">
+          <img class="project__img" src="imgs/projects/game.png" alt="" />
+          <div class="project__description">
+            <h3>Project</h3>
+            <span>Explanation</span>
+          </div>
+        </a>
+        <a href="" class="project" data-type="mobile">
+          <img class="project__img" src="imgs/projects/game.png" alt="" />
+          <div class="project__description">
+            <h3>Project</h3>
+            <span>Explanation</span>
+          </div>
+        </a>
+        <a href="" class="project" data-type="mobile">
+          <img class="project__img" src="imgs/projects/game.png" alt="" />
+          <div class="project__description">
+            <h3>Project</h3>
+            <span>Explanation</span>
+          </div>
+        </a>
+        <a href="" class="project" data-type="mobile">
+          <img class="project__img" src="imgs/projects/game.png" alt="" />
+          <div class="project__description">
+            <h3>Project</h3>
+            <span>Explanation</span>
+          </div>
+        </a>
+      </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+
+    <section id="contact" class="section">
+ 
+        <h1 class="contact__title">Let's talk</h1>
+        <h2 class="contact__email">donghe1472@gmail.com</h2>
+        <div class="contact__links">
+          <a href="https://github.com/dream-ellie" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fa fa-linkedin-square"></i>
+          </a>
+        </div>
+        <p class="contact__rights">2023 prodouct</p>
+      </div>
+    </section>
+     <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
+    {% endblock content %}
+
+    
+  </body>
+</html>
