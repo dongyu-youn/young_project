@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
+from . import models
 # Create your views here.
 
 
 def home_pictures(request):
-    
-    return render(request, "home.html")
+    all_pictures = models.Picture.objects.all()
+ 
+
+    return render(request, "home.html", context={"sweet": all_pictures})

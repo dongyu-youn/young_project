@@ -21,9 +21,13 @@
   font-size: var(--font-regular);
   padding: 8px 48px;
   display: flex;
-  text-align: center;
+
   margin: 10px;
   display: flex;
+}
+
+.category__btn-text {
+  margin-left: 25px;
 }
 
 .category__btn.active,
@@ -68,6 +72,10 @@
   height: 250px;
   margin: 10px;
   background-color: var(--color-light-white);
+}
+
+.project.invisible {
+  display: none;
 }
 
 .project__img {

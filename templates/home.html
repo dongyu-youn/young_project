@@ -23,30 +23,46 @@
      
     </section>
 
+   
     <!-- Work -->
     <section id="work" class="section">
       <div class="section__container">
         <div class="work__categories">
-        <button class="category__btn active">
-          <div class="category__btn-text">최신 <span class="category__count">8</span></div>
+        <button class="category__btn">
+          <div class="category__btn-text" data-filter="new">최신 <span class="category__count">4</span></div>
           </button
         >
         <button class="category__btn ">
-          <div class="category__btn-text">남성성 <span class="category__count">8</span></div>
+          <div class="category__btn-text" data-filter="man">남성성 <span class="category__count">4</span></div>
           </button
         >
         <button class="category__btn ">
-          <div class="category__btn-text">여성성 <span class="category__count">8</span></div>
+          <div class="category__btn-text" data-filter="wom">여성성 <span class="category__count">4</span></div>
           </button
         >
         <button class="category__btn ">
-          <div class="category__btn-text">오늘의 그림 <span class="category__count">8</span></div>
+          <div class="category__btn-text" data-filter="today">오늘의 그림 <span class="category__count">4</span></div>
           </button
         >
        
       </div>
       <div class="work__projects">
-        <a href="" class="project" target="blank" data-type="front-end">
+
+        {% for abc in sweet %}
+          <a href="" class="project" target="blank" data-type="front-end">
+          <img
+            src= '{{abc.get_photo_url}}'
+        
+            class="project__img"
+          />
+          <div class="project__description">
+            <h3>{{abc.제목}}</h3>
+            <span>{{abc.desc}}</span>
+          </div>
+        </a>
+        {% endfor %}
+
+        <!-- <a href="" class="project" target="blank" data-type="front-end">
           <img
             src="imgs/projects/youtube.png"
             alt="Youtube"
@@ -119,7 +135,7 @@
             <h3>Project</h3>
             <span>Explanation</span>
           </div>
-        </a>
+        </a> -->
       </div>
       </div>
     </section>
@@ -141,7 +157,18 @@
         <p class="contact__rights">2023 prodouct</p>
       </div>
     </section>
+
+
+     <!-- arrow button -->
+    <button class="arrow-button">
+        <i class=" fas fa-arrow-up "></i>
+    </button>
+
+
      <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
+     <script type="text/javascript" src="{% static 'js/arrow.js' %}"></script>
+     <script type="text/javascript" src="{% static 'js/filter.js' %}"></script>
+    
     {% endblock content %}
 
     
