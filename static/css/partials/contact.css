@@ -1,7 +1,7 @@
 /* Contact */
 #contact {
   background-color: var(--color-pink);
-  bottom: 0;
+
   display: flex;
   justify-content: center;
   flex-direction: column;

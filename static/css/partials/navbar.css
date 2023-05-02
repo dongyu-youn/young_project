@@ -39,6 +39,7 @@
 }
 
 .navbar__menu__item:hover {
+  border: 1px solid white;
   background-color: var(--color-dark-pink);
   border-radius: var(--size-border-radius);
 }
