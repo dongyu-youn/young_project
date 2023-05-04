@@ -11,7 +11,7 @@
   z-index: 2;
 }
 
-#home #navbar {
+#home__all #navbar {
   background-color: transparent;
   box-shadow: none;
   position: fixed;

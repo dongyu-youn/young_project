@@ -55,5 +55,7 @@
       rel="stylesheet"
     />
   </head>
-  <div id="hllo">{% include 'partials/navbar.html' %}</div>
+  <body>
+    {% include 'partials/navbar.html' %} {% block content %} {% endblock %}
+  </body>
 </html>

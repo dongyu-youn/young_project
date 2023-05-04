@@ -1,82 +1,93 @@
-{% load static %}
-<div id="home">
-  {% include "base.html" %}
+{% extends "base.html" %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body id="home__all">
+    <!-- all -->
 
-  <!-- all -->
+    {% block content %}
 
-  <!-- Navbar -->
+    <!-- Navbar -->
 
-  <!-- Section -->
-  <section>
-    <div class="home__container">
-      <img class="home__avatar" src="imgs/projects/game.png" alt="" />
+    <!-- Section -->
+    <section id="home">
+      <div class="home__container">
+        <img class="home__avatar" src="imgs/projects/game.png" alt="" />
 
-      <h2 class="home__description">영체갤러리</h2>
-      <button class="home__contact">Contact me</button>
-    </div>
-  </section>
-
-  <!-- Work -->
-  <section id="work" class="section">
-    <div class="section__container">
-      <div class="work__categories">
-        <button class="category__btn selected" data-filter="new">
-          <div class="category__btn-text">
-            최신 <span class="category__count">4</span>
-          </div>
-        </button>
-        <button class="category__btn" data-filter="man">
-          <div class="category__btn-text">
-            남성성 <span class="category__count">4</span>
-          </div>
-        </button>
-        <button class="category__btn" data-filter="wom">
-          <div class="category__btn-text">
-            여성성 <span class="category__count">4</span>
-          </div>
-        </button>
-        <button class="category__btn" data-filter="today">
-          <div class="category__btn-text">
-            오늘의 그림 <span class="category__count">4</span>
-          </div>
-        </button>
+        <h2 class="home__description">영체갤러리</h2>
+        <button class="home__contact">Contact me</button>
       </div>
-      <div class="work__projects">
-        {% for abc in sweet %}
-        <a href="" class="project" target="blank" data-type="{{abc.filter}}">
-          <img src="{{abc.get_photo_url}}" class="project__img" />
-          <div class="project__description">
-            <h3>{{abc.제목}}</h3>
-            <span>{{abc.desc}}</span>
-          </div>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="section">
+      <div class="section__container">
+        <div class="work__categories">
+          <button class="category__btn selected" data-filter="new">
+            <div class="category__btn-text">
+              최신 <span class="category__count">4</span>
+            </div>
+          </button>
+          <button class="category__btn" data-filter="man">
+            <div class="category__btn-text">
+              남성성 <span class="category__count">4</span>
+            </div>
+          </button>
+          <button class="category__btn" data-filter="wom">
+            <div class="category__btn-text">
+              여성성 <span class="category__count">4</span>
+            </div>
+          </button>
+          <button class="category__btn" data-filter="today">
+            <div class="category__btn-text">
+              오늘의 그림 <span class="category__count">4</span>
+            </div>
+          </button>
+        </div>
+        <div class="work__projects">
+          {% for abc in sweet %}
+          <a href="" class="project" target="blank" data-type="{{abc.filter}}">
+            <img src="{{abc.get_photo_url}}" class="project__img" />
+            <div class="project__description">
+              <h3>{{abc.제목}}</h3>
+              <span>{{abc.desc}}</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+
+    <section id="contact" class="section">
+      <h1 class="contact__title">Let's talk</h1>
+      <h2 class="contact__email">donghe1472@gmail.com</h2>
+      <div class="contact__links">
+        <a href="https://github.com/dream-ellie" target="_blank">
+          <i class="fab fa-github"></i>
         </a>
-        {% endfor %}
+        <a href="#" target="_blank">
+          <i class="fa fa-linkedin-square"></i>
+        </a>
       </div>
-    </div>
-  </section>
+      <p class="contact__rights">2023 prodouct</p>
+    </section>
 
-  <!-- Contact -->
+    <!-- arrow button -->
+    <button class="arrow-button">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
-  <section id="contact" class="section">
-    <h1 class="contact__title">Let's talk</h1>
-    <h2 class="contact__email">donghe1472@gmail.com</h2>
-    <div class="contact__links">
-      <a href="https://github.com/dream-ellie" target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="#" target="_blank">
-        <i class="fa fa-linkedin-square"></i>
-      </a>
-    </div>
-    <p class="contact__rights">2023 prodouct</p>
-  </section>
+    <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/arrow.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/filter.js' %}"></script>
 
-  <!-- arrow button -->
-  <button class="arrow-button">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/arrow.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/filter.js' %}"></script>
-</div>
+    {% endblock content %}
+  </body>
+</html>
