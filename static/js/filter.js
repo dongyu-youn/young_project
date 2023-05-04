@@ -7,9 +7,11 @@ workBtnContainer.addEventListener("click", (e) => {
   const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
   console.log(projects);
 
-  // const active = document.querySelector(".category__btn.selected");
-  // active.classList.remove("selected");
-  // e.target.classList.add("selected");
+  const active = document.querySelector(".category__btn.selected");
+  const target =
+    e.target.nodeName === "Button" ? e.target : e.target.parentNode;
+  active.classList.remove("selected");
+  target.classList.add("selected");
 
   projectContainer.classList.add("anim-out");
   projects.forEach((v) => {

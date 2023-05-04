@@ -1,13 +1,12 @@
 <!-- Navbar -->
 <nav id="navbar">
   <div class="navbar__logo">
-    <i class="fa-brands fa-artstation"></i>
-    <a href="#">YoungcheArt</a>
+    <a href="{% url 'core:picture' %}">YoungcheArt</a>
   </div>
   <div class="navbar__menu">
     <ul class="navbar__menu">
       <li class="navbar__menu__item">
-        <a href="{% url 'core:pic_list' %}">About</a>
+        <a>About</a>
       </li>
       <li class="navbar__menu__item">
         <a href="{% url 'core:pic_list' %}">Pics</a>

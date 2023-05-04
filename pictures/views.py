@@ -12,10 +12,10 @@ def home_pictures(request):
 
 def all_pictures(request):
     
-    all_pictures = models.Picture.objects.all()
+    all_picture = models.Picture.objects.all()
     
 
     
 
 
-    return render(request, "partials/pic_list.html", context={"potato": all_pictures})
+    return render(request, "partials/pic_list.html", context={"abc": all_picture})
