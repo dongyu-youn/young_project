@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %}
+{% include "base.html" %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +8,7 @@
     <title>Document</title>
   </head>
   <body>
-    {% block content %}
+    {% include 'partials/navbar.html' %}
 
     <div class="pic-list">
  
@@ -76,6 +76,6 @@
     <script type="text/javascript" src="{% static 'js/arrow.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/filter.js' %}"></script>
 
-    {% endblock content %}
+    
   </body>
 </html>
