@@ -1,18 +1,4 @@
-const navbar = document.querySelector("#navbar");
-const navbarHeight = navbar.getBoundingClientRect().height;
-
-document.addEventListener("scroll", () => {
-  console.log(window.scrollY);
-  if (window.scrollY > navbarHeight) {
-    navbar.classList.add("navbar--dark");
-  } else {
-    navbar.classList.remove("navbar--dark");
-  }
-});
-
-// 투명도
-
-const home = document.querySelector(".home__container");
+const home = document.querySelector("#navbar");
 const homeHeight = home.getBoundingClientRect().height;
 
 document.addEventListener("scroll", () => {
@@ -30,7 +16,7 @@ document.addEventListener("scroll", () => {
 });
 
 arrowUp.addEventListener("click", () => {
-  scrollIntoView("#home");
+  scrollIntoView("#navbar");
 });
 
 function scrollIntoView(selector) {

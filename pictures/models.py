@@ -4,6 +4,60 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from core.models import TimeStampedModel
 from django.urls import reverse
 
+from core import models as core_models
+
+
+
+class AbstractItem(core_models.TimeStampedModel):
+
+    """ Abstract Item """
+
+    name = models.CharField(max_length=80)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return self.name
+
+
+class Mind(AbstractItem):
+
+    """ RoomType Model Definition """
+
+    class Meta:
+        verbose_name = "관념"
+
+
+class Shape(AbstractItem):
+
+    """ Amenity Model Definition """
+
+    class Meta:
+        verbose_name_plural = "형태"
+
+
+class Color(AbstractItem):
+
+    """ Facility Model Definition """
+
+    pass
+
+    class Meta:
+        verbose_name_plural = "색깔"
+
+
+class Other(AbstractItem):
+
+    """ HouseRule Model Definition """
+
+    class Meta:
+        verbose_name = "기타"
+
+
+
+
+
 # Create your models here.
 class Picture(TimeStampedModel): 
 
@@ -20,11 +74,23 @@ class Picture(TimeStampedModel):
       (SEMI_D, "today"),
 
     )
+
+   
+    
+
+
     제목 = models.CharField(max_length=100, null=True,  default = '', verbose_name='제목')
     desc = models.TextField(max_length=300, default = '', null=True, verbose_name='내용')
     image = models.ImageField(blank=True)
     filter = models.CharField(choices=SEMI_CHOICES, default = '', max_length=10, blank=False, null=True)
-    
+    mind = models.ManyToManyField("Mind", blank=True)  
+    shape = models.ManyToManyField("Shape", blank=True)
+    color = models.ManyToManyField("Color", blank=True)
+    other = models.ManyToManyField("Other", blank=True)
+
+
+
+
     class Meta:
         ordering = ["-created"] 
         

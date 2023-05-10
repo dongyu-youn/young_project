@@ -65,6 +65,10 @@
   transition: all var(--animation-duration) ease-out;
 }
 
+.work__projects__second {
+  display: none;
+}
+
 .work__projects.anim-out {
   opacity: 0;
   transform: scale(0.96) translateY(40px);
@@ -106,6 +110,10 @@
   transition: all var(--animation-duration) ease-in;
 }
 
+.project__description > h3 span {
+  text-align: center;
+}
+
 .project:hover .project__description {
   opacity: 0.8;
   transform: translateY(0px);
@@ -113,6 +121,11 @@
 
 .project__description h3 {
   color: var(--color-white);
+  text-align: center;
+}
+
+.project__description span {
+  text-align: center;
 }
 
 .project__description h3:after {

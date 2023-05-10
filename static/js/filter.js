@@ -5,12 +5,17 @@ const button = document.querySelector(".category__button");
 
 workBtnContainer.addEventListener("click", (e) => {
   const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  if (filter == null) {
+    return;
+  }
   console.log(projects);
 
+  // Remove selection from the previous item and select the new one
   const active = document.querySelector(".category__btn.selected");
-  const target =
-    e.target.nodeName === "Button" ? e.target : e.target.parentNode;
+
   active.classList.remove("selected");
+  const target =
+    e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
   target.classList.add("selected");
 
   projectContainer.classList.add("anim-out");

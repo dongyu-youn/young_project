@@ -39,4 +39,114 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  margin: 30px;
+}
+
+.pic-filter__button {
+  border: 1px solid var(--color-dark-white);
+
+  font-size: var(--font-regular);
+
+  display: flex;
+}
+
+.pic-filter__button.selected,
+.pic-filter__button:hover {
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
+
+.category__btn.selected .category__count,
+.category__btn:hover .category__count {
+  opacity: 1;
+  top: 0;
+}
+
+.pic-list__page {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  margin: 40px;
+  text-align: center;
+  font-size: var(--font-regular);
+  font-weight: var(--weight-bold);
+}
+
+.pic-list__pageicon {
+  color: black;
+  margin-left: 3px;
+}
+
+.pic-list__pageicons {
+  color: black;
+  margin-right: 3px;
+}
+
+.pic__list {
+  position: relative;
+}
+/* 
+.pic-filter {
+  position: absolute;
+} */
+
+.pic-filter__filterbtn {
+  border: 1px solid var(--color-dark-white);
+  background-color: transparent;
+  cursor: pointer;
+
+  margin: 0;
+  padding: 20px;
+  margin-left: 30px;
+  border-radius: 15px;
+  font-size: var(--font-regular);
+  font-weight: 700;
+}
+
+.pic-filter__filterbtn.selected,
+.pic-filter__filterbtn:hover {
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
+
+.pic-filter__filterbtn i {
+  margin-right: 3px;
+}
+
+.modal {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal__overlay {
+  background-color: var(--color-white);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow-y: scroll;
+}
+
+.modal__content {
+  position: fixed;
+  top: 0px;
+  position: relative;
+}
+
+.pic-filter__slide {
+  display: flex;
+  position: absolute;
+  align-items: center;
 }
