@@ -10,6 +10,8 @@ const closeModal = () => {
   modal.classList.add("hidden");
 };
 
-openButton.addEventListener("click", openModal);
+openButton.addEventListener("click", (e) => {
+  modal.classList.remove("hidden");
+});
 
 picContainer.addEventListener("click", console.log("hello"));
