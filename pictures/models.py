@@ -83,8 +83,8 @@ class Picture(TimeStampedModel):
     desc = models.TextField(max_length=300, default = '', null=True, verbose_name='내용')
     image = models.ImageField(blank=True)
     filter = models.CharField(choices=SEMI_CHOICES, default = '', max_length=10, blank=False, null=True)
-    mind = models.ManyToManyField("Mind", blank=True)  
-    shape = models.ManyToManyField("Shape", blank=True)
+    mind = models.ManyToManyField("Mind", related_name="mind", blank=True)  
+    shape = models.ManyToManyField("Shape", related_name="shape", blank=True)
     color = models.ManyToManyField("Color", blank=True)
     other = models.ManyToManyField("Other", blank=True)
 

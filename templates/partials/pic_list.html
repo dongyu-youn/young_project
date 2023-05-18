@@ -74,21 +74,23 @@
 
         </div>
 
-          
-
-
+        
         </div>
 
         <div class="modal hidden">
-          <div class="modal__overlay"></div>
+          <form method="GET" action="{% url 'core:search' %}">
           <div class="modal__content">
-            <h1>형태</h1>
+         
              <div class="modal__filter">
+                 <h1>형태</h1>
             <ul class="modal__list">
                 {% for pot in abcd %}
                     <li>
+                       <input id="a_{{abc.pk}}" name="shape" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in shapes_s %}
+                            checked
+                        {% endif %} />
                         <label for="a_{{abc.pk}}">{{pot.name}}</label>
-                        <input id="a_{{abc.pk}}" name="amenities" type="checkbox" value={{abc.pk}} />
+                       
                     </li>
                 {% endfor %}
             </ul>
@@ -99,8 +101,13 @@
             <ul class="modal__list">
                 {% for pot in mind %}
                     <li>
+                        <input id="a_{{pot.pk}}" name="amenities" type="checkbox" value={{pot.pk}}
+                         {% if pot.pk|slugify in s_amenities %}
+                                checked
+                            {% endif %}
+                         />
                         <label for="a_{{abc.pk}}">{{pot.name}}</label>
-                        <input id="a_{{abc.pk}}" name="amenities" type="checkbox" value={{abc.pk}} />
+                      
                     </li>
                 {% endfor %}
             </ul>
@@ -111,8 +118,9 @@
             <ul class="modal__list">
                 {% for pot in color %}
                     <li>
+                              <input id="a_{{abc.pk}}" name="amenities" type="checkbox" value={{abc.pk}} />
                         <label for="a_{{abc.pk}}">{{pot.name}}</label>
-                        <input id="a_{{abc.pk}}" name="amenities" type="checkbox" value={{abc.pk}} />
+                
                     </li>
                 {% endfor %}
             </ul>
@@ -125,8 +133,9 @@
             <ul class="modal__list">
                 {% for pot in other %}
                     <li>
+                       <input id="a_{{abc.pk}}" name="amenities" type="checkbox" value={{abc.pk}} />
                         <label for="a_{{abc.pk}}">{{pot.name}}</label>
-                        <input id="a_{{abc.pk}}" name="amenities" type="checkbox" value={{abc.pk}} />
+                       
                     </li>
                 {% endfor %}
             </ul>
@@ -134,10 +143,13 @@
             
         </div>
 
-
-        
-            <button>조회</button>
+        <div class="modal-button">
+          <button class="modal-button__content">전체해제</button>
+          <button class="modal-button__content">조회</button>
+        </div>
+         
           </div>
+          </form>
         </div>
         
     
@@ -179,6 +191,7 @@
             <div class="notice__search-box">
                 <input name="city" placeholder="" class="notice__search-bar" value="{{city}}">
                 <i class="fas fa-search"></i></input>
+
             </div>
             <!-- 글 작성 버튼은 관리자만 보이도록 해주세요 -->
         </form>
