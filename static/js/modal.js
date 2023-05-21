@@ -21,3 +21,10 @@ close.addEventListener("click", (e) => {
 });
 
 picContainer.addEventListener("click", console.log("hello"));
+
+document.querySelector(".modal-button__x").addEventListener("click", (e) => {
+  console.log("이 새끼야");
+  document.querySelectorAll(".modal input").forEach((v) => {
+    v.checked = false;
+  });
+});

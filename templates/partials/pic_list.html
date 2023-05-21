@@ -22,10 +22,10 @@
             <ul class="modal__list">
                 {% for pot in shape %}
                     <li>
-                       <input id="a_{{pot.pk}}" name="shape" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in shapes_s %}
+                       <input id="a_{{abc.pk}}" name="shape" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in shapes_s %}
                             checked
                         {% endif %} />
-                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                        <label for="a_{{abc.pk}}">{{pot.name}}</label>
                     </li>
                 {% endfor %}
             </ul>
@@ -42,7 +42,6 @@
                         
                          />
                         <label for="a_{{pot.pk}}">{{pot.name}}</label>
-                      
                     </li>
                 {% endfor %}
             </ul>
@@ -83,7 +82,7 @@
         </div>
 
         <div class="modal-button">
-          <button class="modal-button__x">전체해제</button>
+          <p class="modal-button__x">전체해제</p>
           <button class="modal-button__content">조회</button>
         </div>
          

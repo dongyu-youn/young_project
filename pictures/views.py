@@ -53,31 +53,35 @@ def search(request):
     minds = request.GET.getlist("mind")
     others = request.GET.getlist("other")
 
+    print(shapes, colors, minds, others)
+# request 요청
     filter_args = {}
-
-    filter_args["제목__contains"] = city
+# args안에 대입
+   
 
 
     if len(shapes) > 0:
         for s_amenity in shapes:
             filter_args["shape__pk"] = int(s_amenity)
+         
+# 만약 shapes의 조건이
 
     if len(colors) > 0:
-        for s_amenity in colors:
-            filter_args["color__pk"] = int(s_amenity)
+        for s in colors:
+            filter_args["color__id"] = int(s)
 
     if len(minds) > 0:
         for abc in minds:
-            filter_args["mind__pk"] = int(abc)
+            filter_args["mind__id"] = int(abc)
     
     if len(others) > 0:
-        for s_amenity in others:
-            filter_args["other__pk"] = int(s_amenity)
+        for oo in others:
+            filter_args["other__id"] = int(oo)
 
     
-
-
-    picture = models.Picture.objects.filter(**filter_args)
+    if 'city' in request.GET: 
+        filter_args["제목__contains"] = city
+    picture = models.Picture.objects.all().filter(**filter_args)
 
  
    
@@ -95,7 +99,7 @@ def search(request):
     # pictures = models.Picture.objects.filter(**filter_args)
     
 
-    return render(request, "partials/search.html", {"abc": picture, })
+    return render(request, "partials/search.html", {"abc": picture })
 
    
     
