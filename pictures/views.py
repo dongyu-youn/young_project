@@ -28,7 +28,7 @@ def all_pictures(request):
 
 
 
-    return render(request, "partials/pic_list.html", context={ "abcd": shapes_s, "mind": mind_s, "color": color_s, "other": other_s})
+    return render(request, "partials/pic_list.html", context={ "potato": pictures, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s})
 
 
 
@@ -40,12 +40,7 @@ def all_pictures(request):
 def search(request):
     city = request.GET.get("city")
 
-    minds = request.GET.getlist("mind")
-  
-    colors = request.GET.getlist("color")
-    others = request.GET.getlist("other")
-
-    print(minds, shapes, colors, others)
+    
 
     shapes_s = models.Shape.objects.all()
     minds_s = models.Mind.objects.all()
@@ -54,27 +49,42 @@ def search(request):
     others_s = models.Other.objects.all()
 
     shapes = request.GET.getlist("shape")
+    colors = request.GET.getlist("color")
+    minds = request.GET.getlist("mind")
+    others = request.GET.getlist("other")
 
     filter_args = {}
+
+    filter_args["제목__contains"] = city
+
 
     if len(shapes) > 0:
         for s_amenity in shapes:
             filter_args["shape__pk"] = int(s_amenity)
 
+    if len(colors) > 0:
+        for s_amenity in colors:
+            filter_args["color__pk"] = int(s_amenity)
+
+    if len(minds) > 0:
+        for abc in minds:
+            filter_args["mind__pk"] = int(abc)
+    
+    if len(others) > 0:
+        for s_amenity in others:
+            filter_args["other__pk"] = int(s_amenity)
+
+    
+
 
     picture = models.Picture.objects.filter(**filter_args)
 
-
-
-
-  
-
  
-
-    query = None
-    if 'city' in request.GET: 
-        query = request.GET.get('city') 
-        products = models.Picture.objects.all().filter(Q(제목__contains=query))
+   
+    # query = None
+    # if 'city' in request.GET: 
+    #     query = request.GET.get('city') 
+    #     products = models.Picture.objects.all().filter(Q(제목__contains=query))
 
 
     # filter_args = {}
@@ -85,7 +95,7 @@ def search(request):
     # pictures = models.Picture.objects.filter(**filter_args)
     
 
-    return render(request, "partials/search.html", {"query": query, "products": products, "abc": picture})
+    return render(request, "partials/search.html", {"abc": picture, })
 
    
     

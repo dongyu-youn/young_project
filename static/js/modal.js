@@ -1,6 +1,6 @@
 const openButton = document.querySelector(".pic-filter__filterbtn");
 const modal = document.querySelector(".modal");
-const overlay = document.querySelector(".body");
+const close = document.querySelector("#close-btn");
 
 const openModal = () => {
   modal.classList.remove("hidden");
@@ -11,7 +11,13 @@ const closeModal = () => {
 };
 
 openButton.addEventListener("click", (e) => {
+  console.log("hello");
   modal.classList.remove("hidden");
+});
+
+close.addEventListener("click", (e) => {
+  console.log("이 씨발롬아");
+  modal.classList.add("hidden");
 });
 
 picContainer.addEventListener("click", console.log("hello"));
