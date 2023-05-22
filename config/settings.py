@@ -35,7 +35,7 @@ ALLOWED_HOSTS = []
 
 
 
-
+AUTH_USER_MODEL = 'users.User'
 
 
 
@@ -52,8 +52,10 @@ DJANGO_APPS = [
 
 
 PROJECT_APPS = [
-    "pictures.apps.PicturesConfig",
     "core.apps.CoreConfig",
+    "pictures.apps.PicturesConfig",
+    "users.apps.UsersConfig",
+  
 ]
 
 

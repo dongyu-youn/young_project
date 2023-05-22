@@ -331,3 +331,15 @@
 .pic__search-bar:focus ~ .pic__search-placeholder p {
   opacity: 0;
 }
+
+.pic__search-bar.active ~ .pic__search-placeholder {
+  transform: translate3d(-20%, 0px, 0px);
+}
+
+.pic__search-bar.active ~ .pic__search-placeholder p {
+  opacity: 0;
+}
+
+.pic__search-bar:focus ~ .pic__search-bar.active {
+  transform: translate3d(-20%, 0px, 0px);
+}

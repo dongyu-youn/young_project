@@ -80,14 +80,20 @@
 
 
 
+         <div>
           <form method="get" action="{% url 'core:search' %}" class="picture__search">
            
-            <div class="notice__search-box">
-                <input name="city" placeholder="" class="notice__search-bar" value="{{city}}">
-                <i class="fas fa-search"></i></input>
+            <div class="pic__search-box">
+                <input name="city" placeholder="" class="pic__search-bar " value="{{city}}" >
+                <div class="pic__search-placeholder">
+                  <i class="fas fa-search"></i></input>
+                  <p class="sc-searchbox-placeholder-text">Search </p>
+                </div>
+                
             </div>
             <!-- 글 작성 버튼은 관리자만 보이도록 해주세요 -->
         </form>
+      </div>
 
     </div>
 

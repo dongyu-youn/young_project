@@ -29,16 +29,20 @@ chevron.addEventListener("click", (e) => {
   console.log(currentSlide);
   if (currentSlide) {
     currentSlide.classList.remove(SHOWING_CLASS);
-    const nextSlide = currentSlide.nextElementSibling;
+    const nextSlide = currentSlide.document.querySelector(
+      ".pic-filter__slide:nth-child(2)"
+    );
     console.log(nextSlide);
     // 다음슬라이드는 2번째걸 택하고
+    // nextSlide 하는 이유 ?
     if (nextSlide) {
       nextSlide.classList.add(SHOWING_CLASS);
-      // 다음 슬라이드에 classlist add
     } else {
       firstSlide.classList.add(SHOWING_CLASS);
-      // 첫번째 슬라이드에 showing class추가
     }
+    // next 슬라이드가 없을경우
+  } else {
+    firstSlide.classList.add(SHOWING_CLASS);
   }
 });
 
