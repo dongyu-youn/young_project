@@ -56,8 +56,3 @@ picBtnContainers.addEventListener("click", (e) => {
   // // 필터가 dataset node를 받고
   // picContainer.classList.add("anim-out");
 });
-
-// active가 될경우
-
-// const SHOWING_CLASS = "showing";
-// const firstSlide = document.querySelector(".pic-filter__slide:first-child");

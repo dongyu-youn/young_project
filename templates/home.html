@@ -42,8 +42,12 @@
           </button>
         </div>
         <div class="work__projects">
-          {% for abc in sweet %}
+         {% for abc in sweet %}
           <a href="" class="project" target="blank" data-type="{{abc.filter}}">
+            <div class="work__icon" onclick="onChange()">
+              <i class="fas fa-heart active"></i>
+              <i class="far fa-heart"></i>
+            </div>
             <img src="{{abc.get_photo_url}}" class="project__img" />
             <div class="project__description">
               <h3>{{abc.제목}}</h3>
@@ -51,7 +55,8 @@
             </div>
           </a>
           {% endfor %}
-        </div>
+        </a>
+      </div>
       </div>
     </section>
 
@@ -78,5 +83,13 @@
     <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/arrow.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/filter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pic-fav.js' %}"></script>
+    <script>
+      function onChange() {
+       
+      }
+    </script>
   </body>
 </html>
+
+
