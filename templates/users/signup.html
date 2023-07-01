@@ -1,6 +1,5 @@
 {% include "base.html" %} {% load static %} {% include 'partials/navbar.html' %}
-<form method="POST" action="{% url 'core:login' %}">
+<form method="POST" action="{% url 'core:signup' %}">
   {% csrf_token %} {{form.as_p}}
-  <button>Login</button>
-  <button>Signup</button>
+  <button>Sign up</button>
 </form>

@@ -11,15 +11,21 @@
       <li class="navbar__menu__item">
         <a href="{% url 'core:pic_list' %}">Pics</a>
       </li>
+
+      {% if user.is_authenticated %}
       <li class="navbar__menu__item">
-        <a href="{% url 'core:pic_list' %}">Profile</a>
+        <a href="{% url 'core:logout' %}">Log out</a>
       </li>
+
       <li class="navbar__menu__item">
-        <a href=>Log in</a>
+        <a href="{{user.get_absolute_url}}">Profile</a>
       </li>
+
+      {% else %}
       <li class="navbar__menu__item">
-        <a href="{% url 'core:pic_list' %}">Log out</a>
+        <a href="{% url 'core:login' %}">Log in</a>
       </li>
+      {% endif %}
     </ul>
   </div>
   <button class="navbar__toggle-btn">

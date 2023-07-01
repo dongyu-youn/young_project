@@ -198,10 +198,15 @@
   font-size: 30px;
 }
 
-.work__icon i {
-  display: none;
+.work__icon {
+  display: flex;
 }
 
-.work__icon i.active {
+#topHeart {
+  display: none;
+  color: red;
+}
+
+#bottomHeart {
   display: block;
 }

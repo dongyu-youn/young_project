@@ -43,10 +43,9 @@ def search(request):
     
 
     shapes_s = models.Shape.objects.all()
-    minds_s = models.Mind.objects.all()
-
-    colors_s = models.Color.objects.all()
-    others_s = models.Other.objects.all()
+    mind_s = models.Mind.objects.all()
+    color_s = models.Color.objects.all()
+    other_s = models.Other.objects.all()
 
     shapes = request.GET.getlist("shape")
     colors = request.GET.getlist("color")
@@ -57,6 +56,7 @@ def search(request):
 # request 요청
     filter_args = {}
 # args안에 대입
+   
    
 
 
@@ -97,9 +97,9 @@ def search(request):
     #         filter_args["amenities__pk"] = int(s_amenity)
 
     # pictures = models.Picture.objects.filter(**filter_args)
-    
+    print(city)
 
-    return render(request, "partials/search.html", {"abc": picture })
+    return render(request, "partials/search.html", {"abc": picture, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s})
 
    
     

@@ -99,7 +99,7 @@
    
           <div class="pic-filter__slide showing">
           <button class="pic-filter__button selected" data-filter="new">
-            <div class="pic-filter__btn-text">#최신</div>
+            <div class="pic-filter__btn-text"></div>
           </button>
           <button class="pic-filter__button" data-filter="man">
             <div class="pic-filter__btn-text">#야</div>
@@ -153,8 +153,8 @@
             <i class="fas fa-chevron-right"></i>
           </div>
 
-           <button class="pic-filter__filterbtn">       <i class="fas fa-bars">필터</i></button>
-   
+           <button class="pic-filter__filterbtn">   
+              <i class="fas fa-bars">필터</i></button>
 
         </div>
 
@@ -168,12 +168,21 @@
       <div class="pic-list__list">
         {% for abcd in potato.object_list %}
         <a href="" class="project" target="blank" data-type="new">
+          
+           <div class="work__icon" >
+              <i  class="fas fa-heart topHeart " id="topHeart"></i>
+              <i class="far fa-heart  fas-2x bottomHeart " id="bottomHeart"></i>
+            </div>
+            <div class="work__icon">
+              <i></i>
+            </div>
           <img src="{{abcd.get_photo_url}}" class="project__img" />
           <div class="project__description">
             <h3>{{abcd.제목}}</h3>
             <span>{{abcd.desc}}</span>
           </div>
         </a>
+
         {% endfor %}
 </div>
 
@@ -239,8 +248,8 @@
     <script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/pic-filter.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
- 
-    <script>
+     <script type="text/javascript" src="{% static 'js/pic-fav.js' %}"></script>
+    <script>  
       const input = document.querySelector(".pic__search-bar");
       function onSubmit() {
         console.log(input.value);

@@ -1,4 +1,30 @@
+body {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 /* Contact */
+.contact__section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact__section .contact__email,
+.contact__section .contact__links,
+.contact__section .contact__rights {
+  margin: 5px 0;
+}
+
 #contact {
   background-color: var(--color-pink);
 

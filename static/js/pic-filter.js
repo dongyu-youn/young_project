@@ -56,3 +56,25 @@ picBtnContainers.addEventListener("click", (e) => {
   // // 필터가 dataset node를 받고
   // picContainer.classList.add("anim-out");
 });
+
+// const form = document.querySelector(".picture__search");
+
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   // 추가로 수행할 작업을 여기에 작성하세요.
+// });
+
+// // input 값 저장하기
+// function saveInputValue(event) {
+//   const input = document.getElementById("cityInput");
+//   localStorage.setItem("cityValue", input.value);
+// }
+
+// // 페이지 로드 시 저장된 input 값 복원하기
+// window.addEventListener("DOMContentLoaded", () => {
+//   const input = document.getElementById("cityInput");
+//   const savedValue = localStorage.getItem("cityValue");
+//   if (savedValue) {
+//     input.value = savedValue;
+//   }
+// });

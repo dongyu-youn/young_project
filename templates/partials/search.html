@@ -6,49 +6,163 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+     <script src="https://kit.fontawesome.com/53f56d64cb.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </head>
+
+  <div class="modal hidden">
+          <button id="close-btn"><ion-icon class="icon" size="large" name="close-outline"></ion-icon></button>
+          <form method="GET" action="{% url 'core:search' %}">
+            
+          <div class="modal__content">
+                <h1>형태</h1>
+             <div class="modal__filter">
+            
+            <ul class="modal__list">
+                {% for pot in shape %}
+                    <li>
+                       <input id="a_{{abc.pk}}" name="shape" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in shapes_s %}
+                            checked
+                        {% endif %} />
+                        <label for="a_{{abc.pk}}">{{pot.name}}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1>관념별</h1>
+             <div class="modal__filter">
+            <ul class="modal__list">
+                {% for pot in mind %}
+                    <li>
+                        <input id="a_{{pot.pk}}" name="mind" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in mind_s %}
+                            checked
+                        {% endif %} 
+                        
+                         />
+                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+         <h1>색깔</h1>
+             <div class="modal__filter">
+            <ul class="modal__list">
+                {% for pot in color %}
+                    <li>
+                              <input id="a_{{pot.pk}}" name="color" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in color_s %}
+                            checked
+                        {% endif %} />
+                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                
+                    </li>
+                {% endfor %}
+            </ul>
+
+            
+        </div>
+
+         <h1>기타</h1>
+             <div class="modal__filter">
+            <ul class="modal__list">
+                {% for pot in other %}
+                    <li>
+                       <input id="a_{{pot.pk}}" name="other" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in other_s %}
+                            checked
+                        {% endif %}  />
+                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                       
+                    </li>
+                {% endfor %}
+            </ul>
+
+            
+        </div>
+
+        <div class="modal-button">
+          <p class="modal-button__x">전체해제</p>
+          <button class="modal-button__content">조회</button>
+        </div>
+         
+          </div>
+          </form>
+        </div>
+
+
   <body class="body">
     {% include 'partials/navbar.html' %}
 
     <div class="pic-list">
       
-        <div class="pic-filter">
+       <div class="pic-filter">
+   
+          <div class="pic-filter__slide showing">
           <button class="pic-filter__button selected" data-filter="new">
-            <div class="pic-filter__btn-text">#최신</div>
+            <div class="pic-filter__btn-text">{{city}}</div>
           </button>
           <button class="pic-filter__button" data-filter="man">
-            <div class="pic-filter__btn-text">#남성성</div>
+            <div class="pic-filter__btn-text">#야</div>
           </button>
           <button class="pic-filter__button" data-filter="wom">
-            <div class="pic-filter__btn-text">#여성성</div>
+            <div class="pic-filter__btn-text">#야임마</div>
           </button>
           <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#열등감</div>
+            <div class="pic-filter__btn-text">#ㄱㄱㄱ</div>
           </button>
           <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#우월감</div>
+            <div class="pic-filter__btn-text">#ㄱㄱㄱ</div>
           </button>
           <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#수치</div>
+            <div class="pic-filter__btn-text">#ㄱㄱ</div>
           </button>
           <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#혜라엄마</div>
+            <div class="pic-filter__btn-text">#ㄱㄱㄱㄱ</div>
           </button>
 
-          <div>
+         
+          </div>
+
+          <div class="pic-filter__slide">
+           <button class="pic-filter__button selected" data-filter="new">
+            <div class="pic-filter__btn-text">#ㄴㄴ</div>
+          </button>
+          <button class="pic-filter__button" data-filter="man">
+            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
+          </button>
+          <button class="pic-filter__button" data-filter="wom">
+            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
+          </button>
+          <button class="pic-filter__button" data-filter="today">
+            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
+          </button>
+          <button class="pic-filter__button" data-filter="today">
+            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
+          </button>
+          <button class="pic-filter__button" data-filter="today">
+            <div class="pic-filter__btn-text">#ㄴㄴ</div>
+          </button>
+          <button class="pic-filter__button" data-filter="today">
+            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
+          </button>
+          
+      
+         </div>
+
+          <div class="pic-filter__chevron">
             <i class="fas fa-chevron-right"></i>
           </div>
+
+           <button class="pic-filter__filterbtn">   
+              <i class="fas fa-bars">필터</i></button>
+
         </div>
 
-        
-       
-        </div>
-
-      
-        
       </div>
 
       <div class="pic-list__list">
+        {% if abc %}
         {% for abcd in abc %}
         <a href="" class="project" target="blank" data-type="new">
           <img src="{{abcd.get_photo_url}}" class="project__img" />
@@ -58,6 +172,14 @@
           </div>
         </a>
         {% endfor %}
+        {% else %}
+        <a href="" class="project" target="blank" data-type="new">
+          <img src="../../no.png" class="project__img" />
+          <div class="project__description">
+            <div>데이터없음</div>
+          </div>
+        </a>
+        {% endif %}
 </div>
 
 
@@ -81,7 +203,7 @@
 
 
          <div>
-          <form method="get" action="{% url 'core:search' %}" class="picture__search">
+         <form method="get" action="{% url 'core:search' %}" class="picture__search">
            
             <div class="pic__search-box">
                 <input name="city" placeholder="" class="pic__search-bar " value="{{city}}" >
@@ -95,7 +217,7 @@
         </form>
       </div>
 
-    </div>
+
 
     <section id="contact" class="section">
       
@@ -112,13 +234,11 @@
     </section>
 
     
-     <button class="arrow-button">
-      <i class="fas fa-arrow-up"></i>
-    </button>
+    
     <script type="text/javascript" src="{% static 'js/arrow-sec.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/arrow.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/filter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/pic-filter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
 
     
   </body>

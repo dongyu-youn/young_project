@@ -44,9 +44,9 @@
         <div class="work__projects">
          {% for abc in sweet %}
           <a href="" class="project" target="blank" data-type="{{abc.filter}}">
-            <div class="work__icon" onclick="onChange()">
-              <i class="fas fa-heart active"></i>
-              <i class="far fa-heart"></i>
+            <div class="work__icon" >
+              <i  class="fas fa-heart " id="topHeart"></i>
+              <i class="far fa-heart  fas-2x " id="bottomHeart"></i>
             </div>
             <img src="{{abc.get_photo_url}}" class="project__img" />
             <div class="project__description">
@@ -85,9 +85,7 @@
     <script type="text/javascript" src="{% static 'js/filter.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/pic-fav.js' %}"></script>
     <script>
-      function onChange() {
-       
-      }
+     
     </script>
   </body>
 </html>
