@@ -55,6 +55,16 @@ class Other(AbstractItem):
         verbose_name = "기타"
 
 
+class SearchHistory(models.Model):
+    query = models.CharField(max_length=255)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(
+        "users.User", on_delete=models.CASCADE, related_name="ss",  null=True, blank=False
+    ) 
+
+    def __str__(self):
+        return self.query
+    
 
 
 
@@ -75,10 +85,6 @@ class Picture(TimeStampedModel):
 
     )
 
-   
-    
-
-
     제목 = models.CharField(max_length=100, null=True,  default = '', verbose_name='제목')
     desc = models.TextField(max_length=300, default = '', null=True, verbose_name='내용')
     image = models.ImageField(blank=True)
@@ -87,8 +93,9 @@ class Picture(TimeStampedModel):
     shape = models.ManyToManyField("Shape", related_name="shape", blank=True)
     color = models.ManyToManyField("Color", blank=True)
     other = models.ManyToManyField("Other", blank=True)
-
-
+    user = models.ForeignKey(
+        "users.User", on_delete=models.CASCADE, related_name="ㄴ",  null=True, blank=False
+    ) 
 
 
     class Meta:

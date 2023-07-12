@@ -18,6 +18,13 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
+@admin.register(models.SearchHistory)
+class ItemAdmin(admin.ModelAdmin):
+        pass
+
+
+
+# Register your models here.
 @admin.register(models.Picture)
 class PictureAdmin(admin.ModelAdmin):
         pass

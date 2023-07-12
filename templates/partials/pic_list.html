@@ -96,13 +96,17 @@
  
       <div class="home">
         <div class="pic-filter">
-   
+            <ul>
+        {% for item in abc %}
+          <li>{{ item }}</li>
+       {% endfor %}
+      </ul>
           <div class="pic-filter__slide showing">
           <button class="pic-filter__button selected" data-filter="new">
-            <div class="pic-filter__btn-text"></div>
+            <div class="pic-filter__btn-text">{{city}}</div>
           </button>
           <button class="pic-filter__button" data-filter="man">
-            <div class="pic-filter__btn-text">#야</div>
+            <div class="pic-filter__btn-text">{{city}}</div>
           </button>
           <button class="pic-filter__button" data-filter="wom">
             <div class="pic-filter__btn-text">#야임마</div>
@@ -159,10 +163,6 @@
         </div>
 
         
-   
-
-      
-        
     
 
       <div class="pic-list__list">
@@ -181,12 +181,9 @@
             <h3>{{abcd.제목}}</h3>
             <span>{{abcd.desc}}</span>
           </div>
-        </a>
-
+        </a>  
         {% endfor %}
-</div>
-
-
+      </div>
 
 
       <div class="pic-list__page">
