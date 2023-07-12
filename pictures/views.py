@@ -16,10 +16,6 @@ def all_pictures(request):
     paginator = Paginator(all_picture, 8)
     pictures = paginator.get_page(page)
 
-
-
-
-
     shapes_s = models.Shape.objects.all()
     mind_s = models.Mind.objects.all()
     color_s = models.Color.objects.all()
@@ -40,6 +36,8 @@ def all_pictures(request):
 def search(request):
     city = request.GET.get("city")
 
+
+   
     
 
     shapes_s = models.Shape.objects.all()
@@ -96,11 +94,21 @@ def search(request):
     #     for s_amenity in shapes_s:
     #         filter_args["amenities__pk"] = int(s_amenity)
 
-    # pictures = models.Picture.objects.filter(**filter_args)
-    print(city)
 
-    return render(request, "partials/search.html", {"abc": picture, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s})
+    search_history = models.SearchHistory(query=city)
+    search_history.save()
+
+    search_history = models.SearchHistory.objects.order_by('-timestamp')[:10]  # 최근 10개의 검색 기록을 가져옴
 
    
-    
-    
+    query = request.GET.get("query")
+
+    # 검색을 수행하고 결과를 처리하는 로직 작성
+
+    # 결과 데이터를 JSON 형식으로 반환
+   
+    print(picture)
+    return render(request, "partials/search.html", {"abc": picture, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s, "city":city, 'search': search_history, 'query': query})
+
+   
+
