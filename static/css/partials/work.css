@@ -202,11 +202,11 @@
   display: flex;
 }
 
-#topHeart {
+.topHeart {
   display: none;
   color: red;
 }
 
-#bottomHeart {
+.bottomHeart {
   display: block;
 }

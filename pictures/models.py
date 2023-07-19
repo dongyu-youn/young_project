@@ -112,4 +112,13 @@ class Picture(TimeStampedModel):
     #     return reverse("project:detail", kwargs={"pk": self.pk})
 
 
+class Favorite(models.Model):
+    user = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    picture = models.ForeignKey(Picture, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('user', 'picture')
+
+
+
 

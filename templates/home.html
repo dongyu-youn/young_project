@@ -45,15 +45,15 @@
          {% for abc in sweet %}
           <a href="" class="project" target="blank" data-type="{{abc.filter}}">
             <div class="work__icon" >
-              <i  class="fas fa-heart " id="topHeart"></i>
-              <i class="far fa-heart  fas-2x " id="bottomHeart"></i>
+              <i class="fas fa-heart topHeart"></i>
+              <i class="far fa-heart  fas-2x bottomHeart" ></i>
             </div>
             <img src="{{abc.get_photo_url}}" class="project__img" />
             <div class="project__description">
               <h3>{{abc.제목}}</h3>
               <span>{{abc.desc}}</span>
             </div>
-          </a>
+          </a> 
           {% endfor %}
         </a>
       </div>

@@ -22,7 +22,10 @@ class ItemAdmin(admin.ModelAdmin):
 class ItemAdmin(admin.ModelAdmin):
         pass
 
-
+# Register your models here.
+@admin.register(models.Favorite)
+class FavoriteAdmin(admin.ModelAdmin):
+        pass
 
 # Register your models here.
 @admin.register(models.Picture)
