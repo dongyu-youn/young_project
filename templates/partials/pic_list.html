@@ -101,7 +101,9 @@
           <li>{{ item }}</li>
        {% endfor %}
       </ul>
+ 
           <div class="pic-filter__slide showing">
+                   <div>인기검색어: </div>
           <button class="pic-filter__button selected" data-filter="new">
             <div class="pic-filter__btn-text">{{city}}</div>
           </button>
@@ -128,6 +130,7 @@
           </div>
 
           <div class="pic-filter__slide">
+              <div>인기검색어: </div>
            <button class="pic-filter__button selected" data-filter="new">
             <div class="pic-filter__btn-text">#ㄴㄴ</div>
           </button>
@@ -170,12 +173,16 @@
         <a href="" class="project" target="blank" data-type="new">
           
            <div class="work__icon" >
-              <i  class="fas fa-heart topHeart " id="topHeart"></i>
-              <i class="far fa-heart  fas-2x bottomHeart " id="bottomHeart"></i>
+            {% if request.user.is_authenticated %}
+            <i class="fas fa-heart topHeart "
+              data-picture-id="{{ abcd.id }}"></i>
+            {% else %}
+            <i class="fas fa-heart topHeart"></i>
+            {% endif %}
+            <i class="far fa-heart fas-2x bottomHeart "
+              data-picture-id="{{ abcd.id }}"></i>
             </div>
-            <div class="work__icon">
-              <i></i>
-            </div>
+           
           <img src="{{abcd.get_photo_url}}" class="project__img" />
           <div class="project__description">
             <h3>{{abcd.제목}}</h3>
@@ -204,7 +211,7 @@
 
       <div>
           <form method="get" action="{% url 'core:search' %}" class="picture__search">
-           
+           {% if user.is_authenticated %}
             <div class="pic__search-box">
                 <input name="city" placeholder="" class="pic__search-bar " value="{{city}}" onchange="onSubmit()">
                 <div class="pic__search-placeholder">
@@ -214,6 +221,7 @@
                 
             </div>
             <!-- 글 작성 버튼은 관리자만 보이도록 해주세요 -->
+               {% endif %}
         </form>
       </div>
 

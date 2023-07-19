@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import models
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
 # Create your views here.
 
 
@@ -36,10 +39,6 @@ def all_pictures(request):
 def search(request):
     city = request.GET.get("city")
 
-
-   
-    
-
     shapes_s = models.Shape.objects.all()
     mind_s = models.Mind.objects.all()
     color_s = models.Color.objects.all()
@@ -50,20 +49,12 @@ def search(request):
     minds = request.GET.getlist("mind")
     others = request.GET.getlist("other")
 
-    print(shapes, colors, minds, others)
-# request 요청
     filter_args = {}
-# args안에 대입
-   
-   
-
 
     if len(shapes) > 0:
         for s_amenity in shapes:
             filter_args["shape__pk"] = int(s_amenity)
          
-# 만약 shapes의 조건이
-
     if len(colors) > 0:
         for s in colors:
             filter_args["color__id"] = int(s)
@@ -76,39 +67,39 @@ def search(request):
         for oo in others:
             filter_args["other__id"] = int(oo)
 
-    
     if 'city' in request.GET: 
         filter_args["제목__contains"] = city
     picture = models.Picture.objects.all().filter(**filter_args)
 
- 
-   
-    # query = None
-    # if 'city' in request.GET: 
-    #     query = request.GET.get('city') 
-    #     products = models.Picture.objects.all().filter(Q(제목__contains=query))
+    search_history = None
+    if city:
+        search_history = models.SearchHistory(query=city, user = request.user)
+        search_history.save()
 
+    search_history_list = models.SearchHistory.objects.order_by('-timestamp')[:10]
 
-    # filter_args = {}
-    # if len(shapes_s) > 0:
-    #     for s_amenity in shapes_s:
-    #         filter_args["amenities__pk"] = int(s_amenity)
-
-
-    search_history = models.SearchHistory(query=city)
-    search_history.save()
-
-    search_history = models.SearchHistory.objects.order_by('-timestamp')[:10]  # 최근 10개의 검색 기록을 가져옴
-
-   
     query = request.GET.get("query")
 
-    # 검색을 수행하고 결과를 처리하는 로직 작성
-
-    # 결과 데이터를 JSON 형식으로 반환
-   
     print(picture)
-    return render(request, "partials/search.html", {"abc": picture, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s, "city":city, 'search': search_history, 'query': query})
+    return render(request, "partials/search.html", {"abc": picture, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s, "city": city, 'search': search_history_list, 'query': query})
 
    
+@login_required
+def toggle_favorite(request, picture_id):
+    picture = models.Picture.objects.get(pk=picture_id)
+    user = request.user
 
+    try:
+        favorite = models.Favorite.objects.get(user=user, picture=picture)
+        favorite.delete()
+        liked = False
+    except models.Favorite.DoesNotExist:
+        favorite = models.Favorite(user=user, picture=picture)
+        favorite.save()
+        liked = True
+
+    data = {
+        'liked': liked,
+        'count': picture.favorite_set.count()
+    }
+    return JsonResponse(data)
