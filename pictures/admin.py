@@ -20,7 +20,7 @@ class ItemAdmin(admin.ModelAdmin):
 # Register your models here.
 @admin.register(models.SearchHistory)
 class ItemAdmin(admin.ModelAdmin):
-        pass
+        list_display = ("count", "query" )
 
 # Register your models here.
 @admin.register(models.Favorite)

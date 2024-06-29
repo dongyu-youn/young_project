@@ -61,6 +61,8 @@ class SearchHistory(models.Model):
     user = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="ss",  null=True, blank=False
     ) 
+    count = models.PositiveIntegerField(default=0)
+
 
     def __str__(self):
         return self.query
@@ -82,13 +84,14 @@ class Picture(TimeStampedModel):
       (SEMI_B, "man"),
       (SEMI_C, "new"),
       (SEMI_D, "today"),
-
     )
 
     제목 = models.CharField(max_length=100, null=True,  default = '', verbose_name='제목')
     desc = models.TextField(max_length=300, default = '', null=True, verbose_name='내용')
     image = models.ImageField(blank=True)
     filter = models.CharField(choices=SEMI_CHOICES, default = '', max_length=10, blank=False, null=True)
+
+    
     mind = models.ManyToManyField("Mind", related_name="mind", blank=True)  
     shape = models.ManyToManyField("Shape", related_name="shape", blank=True)
     color = models.ManyToManyField("Color", blank=True)
@@ -96,6 +99,8 @@ class Picture(TimeStampedModel):
     user = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="ㄴ",  null=True, blank=False
     ) 
+
+    
 
 
     class Meta:

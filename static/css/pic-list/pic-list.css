@@ -184,6 +184,14 @@
   align-items: center;
 }
 
+.pic-filter__sort {
+  display: flex;
+}
+
+.pic-filter__sort i {
+  margin-right: 5px;
+}
+
 .pic-filter__chevron {
   z-index: 99999;
   position: absolute;
@@ -346,4 +354,20 @@
 
 .work__icon .topHeart {
   display: none;
+}
+
+/* 드롭다운 리스트 숨기기 */
+.dropdown {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  position: absolute;
+}
+
+/* 드롭다운 리스트 보이기 */
+.show {
+  display: block;
 }

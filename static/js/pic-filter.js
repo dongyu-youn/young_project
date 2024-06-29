@@ -78,27 +78,3 @@ chevron.addEventListener("click", (e) => {
 // //     input.value = savedValue;
 // //   }
 // // });
-
-document.addEventListener("DOMContentLoaded", function () {
-  // 버튼 요소 선택
-  var buttons = document.querySelectorAll(".pic-filter__button");
-
-  // 각 버튼에 이벤트 리스너 추가
-  buttons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      // 버튼에 설정된 query 값 가져오기
-      var query = button.getAttribute("data-query");
-
-      // AJAX 요청 생성
-      var xhr = new XMLHttpRequest();
-      xhr.open(
-        "GET",
-        "http://127.0.0.1:8000/search/?query=" + encodeURIComponent(query),
-        true
-      );
-
-      // 요청 전송
-      xhr.send();
-    });
-  });
-});

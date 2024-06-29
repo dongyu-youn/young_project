@@ -4,6 +4,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.db.models import BooleanField, Case, When
+from django.db.models import Count
 
 # Create your views here.
 
@@ -24,14 +26,10 @@ def all_pictures(request):
     color_s = models.Color.objects.all()
     other_s = models.Other.objects.all()
 
-
-
-
-    return render(request, "partials/pic_list.html", context={ "potato": pictures, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s})
-
-
-
-
+   
+    search_history = models.SearchHistory.objects.exclude(count=0).order_by('-count')[:8]
+ 
+    return render(request, "partials/pic_list.html", context={ "potato": pictures, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s, "history": search_history})
 
 
 
@@ -53,7 +51,7 @@ def search(request):
 
     if len(shapes) > 0:
         for s_amenity in shapes:
-            filter_args["shape__pk"] = int(s_amenity)
+            filter_args["shape__id"] = int(s_amenity)
          
     if len(colors) > 0:
         for s in colors:
@@ -76,7 +74,20 @@ def search(request):
         search_history = models.SearchHistory(query=city, user = request.user)
         search_history.save()
 
-    search_history_list = models.SearchHistory.objects.order_by('-timestamp')[:10]
+    if city and request.user.is_authenticated:
+        search_history_list = models.SearchHistory.objects.filter(query=city, user=request.user)
+        if search_history_list.exists():  # 조건에 맞는 객체가 존재하는지 확인
+            search_history = search_history_list.first()  # 첫 번째 객체 선택
+            search_history.count += 1
+            search_history.save()
+        else:
+            # 새로운 검색어라면 객체를 생성하여 저장
+            search_history = models.SearchHistory(query=city, user=request.user, count=1)
+            search_history.save()
+
+    
+
+    search_history_list = models.SearchHistory.objects.order_by('-timestamp')[:8]
 
     query = request.GET.get("query")
 

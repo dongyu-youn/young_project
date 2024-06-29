@@ -90,7 +90,7 @@
           </form>
         </div>
 
-  <body >
+  <body>
     {% include 'partials/navbar.html' %}
   
  
@@ -102,71 +102,52 @@
        {% endfor %}
       </ul>
  
-          <div class="pic-filter__slide showing">
-                   <div>인기검색어: </div>
-          <button class="pic-filter__button selected" data-filter="new">
-            <div class="pic-filter__btn-text">{{city}}</div>
-          </button>
-          <button class="pic-filter__button" data-filter="man">
-            <div class="pic-filter__btn-text">{{city}}</div>
-          </button>
-          <button class="pic-filter__button" data-filter="wom">
-            <div class="pic-filter__btn-text">#야임마</div>
-          </button>
-          <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#ㄱㄱㄱ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#ㄱㄱㄱ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#ㄱㄱ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#ㄱㄱㄱㄱ</div>
-          </button>
+         <div class="pic-filter__slide showing">
+          <div class="pic-filter__sort">
+           
+           <ul class="pic-filter__ul">
+              <i class="fas fa-sort"></i>
+              <li class="pic-filter__pop">인기검색어:
+                <ul class="dropdown">
 
-         
+             {% for his in history %}
+
+             {% if his.user == user %}
+        <!-- 사용자에게만 보여지는 리스트 아이템 -->
+   
+              <button class="pic-filter__button " data-filter="new" data-query="{{ his.query }}">
+                      <div class="pic-filter__btn-text">
+                          {{ his.query }}
+                      </div>
+                    </button> 
+              {% endif %}
+              
+             {% endfor %}
+
+<!-- 
+                  {% for his in history %}
+
+             {% if his.user == user %}
+        사용자에게만 보여지는 리스트 아이템
+   
+              <button class="pic-filter__button " data-filter="new" data-query="{{ his.query }}">
+                      <div class="pic-filter__btn-text">
+                          {{ his.query }}
+                      </div>
+                    </button> 
+              {% endif %}
+              
+             {% endfor %} -->
+                </ul>
+              </li>
+             
+            </ul>
           </div>
-
-          <div class="pic-filter__slide">
-              <div>인기검색어: </div>
-           <button class="pic-filter__button selected" data-filter="new">
-            <div class="pic-filter__btn-text">#ㄴㄴ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="man">
-            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="wom">
-            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#ㄴㄴ</div>
-          </button>
-          <button class="pic-filter__button" data-filter="today">
-            <div class="pic-filter__btn-text">#ㄴㄴㄴ</div>
-          </button>
-          
-      
-         </div>
-
-          <div class="pic-filter__chevron">
-            <i class="fas fa-chevron-right"></i>
           </div>
-
            <button class="pic-filter__filterbtn">   
               <i class="fas fa-bars">필터</i></button>
 
         </div>
-
-        
-    
 
       <div class="pic-list__list">
         {% for abcd in potato.object_list %}
@@ -176,7 +157,8 @@
             {% if request.user.is_authenticated %}
             <i class="fas fa-heart topHeart "
               data-picture-id="{{ abcd.id }}"></i>
-            {% else %}
+        
+              {% else %}
             <i class="fas fa-heart topHeart"></i>
             {% endif %}
             <i class="far fa-heart fas-2x bottomHeart "
@@ -253,6 +235,7 @@
     <script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/pic-filter.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
      <script type="text/javascript" src="{% static 'js/pic-fav.js' %}"></script>
     <script>  
       const input = document.querySelector(".pic__search-bar");
@@ -272,3 +255,6 @@
    </div>
   </body>
 </html>
+
+
+r
