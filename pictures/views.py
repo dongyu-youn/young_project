@@ -26,10 +26,17 @@ def all_pictures(request):
     color_s = models.Color.objects.all()
     other_s = models.Other.objects.all()
 
-   
+    # 여기서 search history를 불러오고 템플릿에 전달
     search_history = models.SearchHistory.objects.exclude(count=0).order_by('-count')[:8]
  
-    return render(request, "partials/pic_list.html", context={ "potato": pictures, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s, "history": search_history})
+    return render(request, "partials/pic_list.html", context={ 
+        "potato": pictures, 
+        "mind": mind_s, 
+        "color": color_s, 
+        "other": other_s, 
+        "shape": shapes_s, 
+        "history": search_history  # history를 템플릿에 전달
+    })
 
 
 
@@ -49,50 +56,55 @@ def search(request):
 
     filter_args = {}
 
+    # Picture 모델에 있는 필드로 필터링 진행
     if len(shapes) > 0:
-        for s_amenity in shapes:
-            filter_args["shape__id"] = int(s_amenity)
+        for shape in shapes:
+            filter_args["shape__id"] = int(shape)  # department 대신 shape로 수정
          
     if len(colors) > 0:
-        for s in colors:
-            filter_args["color__id"] = int(s)
+        for color in colors:
+            filter_args["color__id"] = int(color)  # species 대신 color로 수정
 
     if len(minds) > 0:
-        for abc in minds:
-            filter_args["mind__id"] = int(abc)
+        for mind in minds:
+            filter_args["mind__id"] = int(mind)  # mind 필드 그대로 사용
     
     if len(others) > 0:
-        for oo in others:
-            filter_args["other__id"] = int(oo)
+        for other in others:
+            filter_args["other__id"] = int(other)  # other 필드 그대로 사용
 
-    if 'city' in request.GET: 
-        filter_args["제목__contains"] = city
+    if city:
+        filter_args["제목__contains"] = city  # 제목 필드가 맞는지 확인 필요
+
+    # 필터링된 결과 가져오기
     picture = models.Picture.objects.all().filter(**filter_args)
 
-    search_history = None
-    if city:
-        search_history = models.SearchHistory(query=city, user = request.user)
-        search_history.save()
-
+    # 검색 기록 저장 로직
     if city and request.user.is_authenticated:
         search_history_list = models.SearchHistory.objects.filter(query=city, user=request.user)
-        if search_history_list.exists():  # 조건에 맞는 객체가 존재하는지 확인
-            search_history = search_history_list.first()  # 첫 번째 객체 선택
+        if search_history_list.exists():
+            search_history = search_history_list.first()
             search_history.count += 1
             search_history.save()
         else:
-            # 새로운 검색어라면 객체를 생성하여 저장
             search_history = models.SearchHistory(query=city, user=request.user, count=1)
             search_history.save()
 
-    
-
+    # 최근 검색 기록 가져오기
     search_history_list = models.SearchHistory.objects.order_by('-timestamp')[:8]
 
     query = request.GET.get("query")
 
-    print(picture)
-    return render(request, "partials/search.html", {"abc": picture, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s, "city": city, 'search': search_history_list, 'query': query})
+    return render(request, "partials/search.html", {
+        "abc": picture,
+        "mind": mind_s,
+        "color": color_s,
+        "other": other_s,
+        "shape": shapes_s,
+        "city": city,
+        "search": search_history_list,
+        "query": query
+    })
 
    
 @login_required
